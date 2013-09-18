@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Highcharts-legend-highlighter : " />
+    <meta name="description" content="Legend Highlighter : for Highcharts.js" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Highcharts-legend-highlighter</title>
+    <title>Legend Highlighter</title>
   </head>
 
   <body>
@@ -18,8 +18,8 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/Sidnet/highcharts-legend-highlighter">View on GitHub</a>
 
-          <h1 id="project_title">Highcharts-legend-highlighter</h1>
-          <h2 id="project_tagline"></h2>
+          <h1 id="project_title">Legend Highlighter</h1>
+          <h2 id="project_tagline">for Highcharts.js</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/Sidnet/highcharts-legend-highlighter/zipball/master">Download this project as a .zip file</a>
@@ -31,14 +31,90 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <p>Hello, World!</p>
+        <h3>
+<a name="what-is-it" class="anchor" href="#what-is-it"><span class="octicon octicon-link"></span></a>What is it?</h3>
+
+<p>Legend Highlighter is a plugin for Highcharts.js, which adds a new data series highlight effect to your charts.</p>
+
+<h3>
+<a name="how-does-it-work" class="anchor" href="#how-does-it-work"><span class="octicon octicon-link"></span></a>How does it work?</h3>
+
+<p>Well, it's very simple - just hover over one of the data series label in legend box. You'll see, that all data series except hovered one are dimmed (to be specific, they will be transparent). An additional "pie chart" effect makes the hovered portion of data sliced out of the chart.</p>
+
+<h3>
+<a name="how-do-i-start-using-the-magic" class="anchor" href="#how-do-i-start-using-the-magic"><span class="octicon octicon-link"></span></a>How do I start using the magic?</h3>
+
+<ol>
+<li>Include our plugin in your page:<br><pre><code>&lt;script src="highcharts-legend-highlighter.src.js"&gt;&lt;/script&gt;</code></pre>
+</li>
+<li>Enable the plugin by adding this code to your chart options:<br><pre><code>legend: {
+    highlightSeries: {
+        enabled: true
+    }
+}
+</code></pre>
+</li>
+</ol><h3>
+<a name="can-i-see-any-demos" class="anchor" href="#can-i-see-any-demos"><span class="octicon octicon-link"></span></a>Can I see any demos?</h3>
+
+<p>
+  <a href="demos/demo-01.html">Demo 01 - Lines</a><br/>
+  <a href="demos/demo-02.html">Demo 02 - Area</a><br/>
+  <a href="demos/demo-03.html">Demo 03 - Area & Lines (using linkSeries)</a><br/>
+  <a href="demos/demo-04.html">Demo 04 - Bars</a><br/>
+  <a href="demos/demo-05.html">Demo 05 - Pie (with allowSelectPoint enabled)</a><br/>
+  <a href="demos/demo-06.html">Demo 06 - Bubbles</a><br/>
+  <a href="demos/demo-07.html">Demo 07 - Bars & Lines (two separated charts)</a><br/>
+  <a href="demos/demo-08.html">Demo 08 - Funnel</a><br/>
+  <a href="demos/demo-09.html">Demo 09 - Data madness!</a><br/>
+  <br/>
+  <span style="color: grey; font-size: 10pt;">(Note: all demos are based on original Highcharts.js demos available here: <a href="http://www.highcharts.com/demo/" target="_blank">http://www.highcharts.com/demo/</a>)</span>
+</p>
+
+<h3>
+<a name="so-what-can-it-actually-do" class="anchor" href="#so-what-can-it-actually-do"><span class="octicon octicon-link"></span></a>So, what can it actually do?</h3>
+
+<ul>
+<li>Dim charts of one of the following types: <code>line</code>, <code>spline</code>, <code>area</code>, <code>areaspline</code>, <code>arearange</code>, <code>areasplinerange</code>, <code>column</code>, <code>columnrange</code>, <code>bar</code>, <code>scatter</code>, <code>bubble</code>, <code>boxplot</code>, <code>errorbar</code>, <code>waterfall</code>, <code>pie</code>, <code>gauge</code>, <code>funnel</code>
+</li>
+<li>Slice out hovered <code>pie</code> chart portion and present it to the user</li>
+<li>Support multiple charts of different types in one painting area</li>
+<li>Remember "user selected" chart portion and restore the selection when user stops hovering over a label (usefull if using <code>allowPointSelect</code> in <code>pie</code> chart)</li>
+<li>Properly handle all <code>linkedSeries</code> - if other series are linked to the series currently beeing hovered over, they won't be dimmed (because they are treated as a part of hovered series)</li>
+</ul><h3>
+<a name="are-there-any-settings" class="anchor" href="#are-there-any-settings"><span class="octicon octicon-link"></span></a>Are there any settings?</h3>
+
+<p>Yes, you can change plugin settings by adding new entries in chart options, under <code>legend.highlightSeries</code> group.
+Currently, the plugin will only use three additional options:</p>
+
+<ul>
+<li>
+<code>dimPiePieces</code> - if set to <code>true</code>, plugin will additionally dim pie portions not hovered over by user</li>
+<li>
+<code>defaultOpacity</code> - opacity level of chart element in "normal state" (default: 1)</li>
+<li>
+<code>dimmedOpacity</code> - opacity level of chart element in "dimmed state" (default: 0.25)</li>
+</ul><h3>
+<a name="authors" class="anchor" href="#authors"><span class="octicon octicon-link"></span></a>Authors</h3>
+
+<p>
+  <ul>
+    <li><a href="https://github.com/Michciu" target="_blank">Michał Dziekoński</a></li>
+    <li><a href="https://github.com/Krzypis" target="_blank">Krzysztof Pisera</a></li>
+  </ul>
+</p>
+
+<h3>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p>License file can be found here:<br/><a href="https://raw.github.com/Sidnet/highcharts-legend-highlighter/master/LICENSE" target="_blank">https://raw.github.com/Sidnet/highcharts-legend-highlighter/master/LICENSE</a></p>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Highcharts-legend-highlighter maintained by <a href="https://github.com/Sidnet">Sidnet</a></p>
+        <p class="copyright">Legend Highlighter maintained by <a href="https://github.com/Sidnet">Sidnet</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
