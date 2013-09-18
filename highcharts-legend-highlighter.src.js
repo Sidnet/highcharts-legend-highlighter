@@ -68,6 +68,7 @@
         var settings = {
             defaultOpacity: options.defaultOpacity ? options.defaultOpacity : 1,
             dimmedOpacity: options.dimmedOpacity ? options.dimmedOpacity : 0.25,
+            dimPiePieces: options.dimPiePieces
         };
 
         if (!isTypeSupported(itemType)) {
@@ -98,14 +99,21 @@
 
         if (itemType === "pie") {
             // Slice out currently hovered over pie piece
+            // Dim the other ones if "settings.dimmedOpacity" is true
             addEvent(element, "mouseenter", function () {
                 for (var i = 0; i < item.series.data.length; ++i) {
                     if (item.series.data[i].sliced) {
                         item.series.data[i].slice(false, true);
                         item.series.data[i]._restoreSlice = true;
                     }
+                    if (settings.dimPiePieces) {
+                        item.series.data[i].graphic.attr("opacity", settings.dimmedOpacity);
+                    }
                 }
                 item.slice(true, true);
+                if (settings.dimPiePieces) {
+                    item.graphic.attr("opacity", settings.defaultOpacity);
+                }
             });
 
             addEvent(element, "mouseleave", function () {
@@ -114,6 +122,9 @@
                     if (item.series.data[i]._restoreSlice) {
                         item.series.data[i].slice(true, true);
                         item.series.data[i]._restoreSlice = undefined;
+                    }
+                    if (settings.dimPiePieces) {
+                        item.series.data[i].graphic.attr("opacity", settings.defaultOpacity);
                     }
                 }
             });
