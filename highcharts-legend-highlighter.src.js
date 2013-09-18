@@ -23,6 +23,7 @@
         case "waterfall":
         case "gauge":
         case "pie":
+        case "funnel":
             return true;
         default:
             return false;
@@ -124,6 +125,24 @@
                         item.series.data[i]._restoreSlice = undefined;
                     }
                     if (settings.dimPiePieces) {
+                        item.series.data[i].graphic.attr("opacity", settings.defaultOpacity);
+                    }
+                }
+            });
+        }
+
+        if (itemType === "funnel") {
+            // Dim all data points in funnel chart except the currently hovered over one
+            addEvent(element, "mouseenter", function () {
+                for (var i = 0; i < item.series.data.length; ++i) {
+                    if (item.series.data[i] !== item) {
+                        item.series.data[i].graphic.attr("opacity", settings.dimmedOpacity);
+                    }
+                }
+            });
+            addEvent(element, "mouseleave", function () {
+                for (var i = 0; i < item.series.data.length; ++i) {
+                    if (item.series.data[i] !== item) {
                         item.series.data[i].graphic.attr("opacity", settings.defaultOpacity);
                     }
                 }
