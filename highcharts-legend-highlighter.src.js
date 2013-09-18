@@ -22,6 +22,7 @@
         case "errorbar":
         case "waterfall":
         case "gauge":
+        case "pie":
             return true;
         default:
             return false;
