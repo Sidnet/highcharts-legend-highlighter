@@ -35,6 +35,7 @@
             return series[item.index].type;
         }
     };
+
     var getItemIndex = function (item, type) {
         if (item.index !== undefined) {
             return item.index;
@@ -93,6 +94,29 @@
                 series[i].markerGroup.attr("opacity", settings.defaultOpacity);
             }
         });
+
+        if (itemType === "pie") {
+            // Slice out currently hovered over pie piece
+            addEvent(element, "mouseenter", function () {
+                for (var i = 0; i < item.series.data.length; ++i) {
+                    if (item.series.data[i].sliced) {
+                        item.series.data[i].slice(false, true);
+                        item.series.data[i]._restoreSlice = true;
+                    }
+                }
+                item.slice(true, true);
+            });
+
+            addEvent(element, "mouseleave", function () {
+                item.slice(false, true);
+                for (var i = 0; i < item.series.data.length; ++i) {
+                    if (item.series.data[i]._restoreSlice) {
+                        item.series.data[i].slice(true, true);
+                        item.series.data[i]._restoreSlice = undefined;
+                    }
+                }
+            });
+        }
 
         item._legendHighlightReady = true;
     });
