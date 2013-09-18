@@ -80,8 +80,16 @@
 
         // (Default events) Dim all data series except the currently hovered over one
         addEvent(element, "mouseenter", function () {
-            for (var i = 0; i < series.length; ++i) {
-                if (i === itemIndex) {
+            var i;
+            var linkedSeries = {};
+            if (item.linkedSeries !== undefined) {
+                for (i = 0; i < item.linkedSeries.length; ++i) {
+                    linkedSeries[item.linkedSeries[i].index] = true;
+                }
+            }
+
+            for (i = 0; i < series.length; ++i) {
+                if (i === itemIndex || linkedSeries[i] !== undefined) {
                     continue;
                 }
                 series[i].group.attr("opacity", settings.dimmedOpacity);
@@ -89,8 +97,16 @@
             }
         });
         addEvent(element, "mouseleave", function () {
-            for (var i = 0; i < series.length; ++i) {
-                if (i === itemIndex) {
+            var i;
+            var linkedSeries = {};
+            if (item.linkedSeries !== undefined) {
+                for (i = 0; i < item.linkedSeries.length; ++i) {
+                    linkedSeries[item.linkedSeries[i].index] = true;
+                }
+            }
+
+            for (i = 0; i < series.length; ++i) {
+                if (i === itemIndex || linkedSeries[i] !== undefined) {
                     continue;
                 }
                 series[i].group.attr("opacity", settings.defaultOpacity);
