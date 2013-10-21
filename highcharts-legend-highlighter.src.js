@@ -1,3 +1,16 @@
+/*!
+ * Legend Highlighter for Highcharts.js
+ *
+ * https://github.com/Sidnet/highcharts-legend-highlighter
+ *
+ * Authors:
+ *   Michał Dziekoński (https://github.com/Michciu)
+ *   Krzysztof Pisera (https://github.com/Krzypis)
+ *
+ * Released under the MIT license:
+ *   https://raw.github.com/Sidnet/highcharts-legend-highlighter/master/LICENSE
+ */
+
 /* global Highcharts */
 
 (function (Highcharts) {
