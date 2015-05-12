@@ -1,0 +1,24 @@
+{
+  "name": "highcharts-legend-highlighter",
+  "version": "1.0.0",
+  "homepage": "http://sidnet.github.io/highcharts-legend-highlighter/",
+  "authors": [
+    "Sidnet"
+  ],
+  "description": "Highcharts plugin to highlight data series when hovering over the corresponding legend item.",
+  "main": "highcharts-legend-highlighter.src.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "highcharts",
+    "legend",
+    "highlight"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
