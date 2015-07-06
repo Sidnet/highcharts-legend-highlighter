@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "homepage": "http://sidnet.github.io/highcharts-legend-highlighter/",
   "authors": [
-    "Sidnet"
+    { "name": "Michał Dziekoński", "email": "michal.dziekonski@sidnet.info", "homepage": "https://github.com/mdziekon" },
+    { "name": "Krzysztof Pisera", "homepage": "https://github.com/Krzypis" }
   ],
   "description": "Highcharts plugin to highlight data series when hovering over the corresponding legend item.",
   "main": "highcharts-legend-highlighter.src.js",
