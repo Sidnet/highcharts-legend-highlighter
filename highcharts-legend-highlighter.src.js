@@ -4,7 +4,7 @@
  * https://github.com/Sidnet/highcharts-legend-highlighter
  *
  * Authors:
- *   Michał Dziekoński (https://github.com/Michciu)
+ *   Michał Dziekoński (https://github.com/mdziekon)
  *   Krzysztof Pisera (https://github.com/Krzypis)
  *
  * Released under the MIT license:
