@@ -105,8 +105,11 @@
                 if (i === itemIndex || linkedSeries[i] !== undefined) {
                     continue;
                 }
-                series[i].group.attr("opacity", settings.dimmedOpacity);
-                series[i].markerGroup.attr("opacity", settings.dimmedOpacity);
+
+                if (series[i].visible) {
+                    series[i].group.attr("opacity", settings.dimmedOpacity);
+                    series[i].markerGroup.attr("opacity", settings.dimmedOpacity);
+                }
             }
         });
         addEvent(element, "mouseleave", function () {
@@ -122,8 +125,11 @@
                 if (i === itemIndex || linkedSeries[i] !== undefined) {
                     continue;
                 }
-                series[i].group.attr("opacity", settings.defaultOpacity);
-                series[i].markerGroup.attr("opacity", settings.defaultOpacity);
+
+                if (series[i].visible) {
+                    series[i].group.attr("opacity", settings.defaultOpacity);
+                    series[i].markerGroup.attr("opacity", settings.defaultOpacity);
+                }
             }
         });
 
